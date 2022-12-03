@@ -21,6 +21,8 @@ target 'front' do
 
   pod 'react-native-voice', :path => '../node_modules/react-native-voice'
 
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
   target 'frontTests' do
     inherit! :complete
     # Pods for testing
@@ -35,5 +37,6 @@ target 'front' do
   post_install do |installer|
     react_native_post_install(installer)
     __apply_Xcode_12_5_M1_post_install_workaround(installer)
+
   end
 end
