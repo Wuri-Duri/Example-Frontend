@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Pressable, SafeAreaView, StyleSheet, Text, ImageBackground, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import axios from 'axios';
+//import axios from 'axios';
 
 const App = () => {
 
