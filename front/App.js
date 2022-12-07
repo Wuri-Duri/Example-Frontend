@@ -13,18 +13,20 @@ Ionicons.loadFont();
 import axios from 'axios';
 
 const App = () => {
-  const [inputSentence, setData] = useState(
-    '라푼젤은 피터팬과 함께라면 그곳이 어디든 따라가겠다고 했죠..',
-  );
-
+  const [inputSentence, setData] = useState('');
+  handleData = text => {
+    this.setState({inputSentence: text});
+  };
   const onClick = () => {
     axios
       .post('http://52.79.115.87:3000/fairytale/create/others', {
-        bookIdx: 19,
-        inputSentence: inputSentence,
+        headers: {
+          'content-type': 'application/json',
+        },
+        //inputSentence : inputSentence
       })
       .then(response => {
-        setData(response.data.data);
+        setData(response.inputSentence.slip.data);
       })
       .catch(error => console.log(error));
   };
@@ -34,7 +36,10 @@ const App = () => {
       <ImageBackground
         source={require('./images/bgImage.jpg')}
         style={styles.bgImage}>
-        <Text style={styles.textBox}>{inputSentence}</Text>
+        <Text style={styles.textBox}>
+          하지만 그들은 한 가지 비밀을 공유하지는 않았답니다.
+          {'\n'} 그 비밀은 바로 "백설공주가 마녀"라는 사실이죠.
+        </Text>
         <Text style={styles.textTitle}>다음 문장을 말해줘! </Text>
         <Button onPress={onClick} title="불러오기">
           불러오기
@@ -75,8 +80,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Jalnan',
     letterSpacing: 1,
     paddingTop: 25,
-    paddingRight: 20,
-    paddingLeft: 20,
     overflow: 'hidden',
     borderRadius: 30,
   },
