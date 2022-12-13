@@ -1,6 +1,5 @@
 /node_modules
 /config
-
 # OSX
 #
 .DS_Store
